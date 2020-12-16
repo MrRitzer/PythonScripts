@@ -1,18 +1,30 @@
+import random
 def solution(x,y):
+    arrF = [int(x),int(y)]
     M = 1
     F = 1
-    gens1 = 0
+    gens1 = -1
     gens2 = 0
-    gensf = 0
-    while M < x:
-        print("Check")
-    while F < y:
-        print("Check")
-    return str(gensf)
-#print(solution ('2','1'))
-num = 10
-x = 0
-while x < 50:
-    num = (num * num)
-    x = x + 1
-print(num)
+    arrI = [M,F]
+    while arrI != arrF:
+        arrI = [M,F]
+        x = random.randint(1,2)
+        if x == 1:
+            M = M + F
+            F = F
+            gens1 = gens1 + 1
+        if x == 2:
+            M = M
+            F = F + M
+            gens1 = gens1 + 1
+        if M > 10^50 or F > 10^50:
+            gens1=-1
+            M = 1
+            F = 1
+            gens2 = gens2 + 1
+        if gens2 > 10^50:
+            gens1 = 'impossible'
+            break
+
+    return str(gens1)
+print(solution ('0','1'))
